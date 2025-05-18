@@ -112,3 +112,17 @@ resource "aws_route" "custom_public_route" {
   gateway_id = aws_internet_gateway.igw.id
   # Alternatively, if it is a NAT or instance, you could use nat_gateway_id or instance_id.
 }
+
+## Custom EIP for the EC2 instances
+
+resource "aws_eip" "custom" {
+  for_each = var.elastic_ips
+  vpc      = true
+
+  tags = merge(
+    {
+      Name = each.value.name
+    },
+    each.value.tags
+  )
+}

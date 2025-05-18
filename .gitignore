@@ -6,8 +6,8 @@
 crash.log
 
 # Terraform variables files (can contain secrets)
-*.tfvars
-*.tfvars.json
+#*.tfvars
+#*.tfvars.json
 
 # Sensitive override files
 override.tf

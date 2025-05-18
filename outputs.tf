@@ -13,3 +13,17 @@ output "subnet_names" {
   value       = [for s in aws_subnet.subnet : s.tags["Name"]]
 }
 
+output "eip_public_ips" {
+  description = "Elastic IP public IPs"
+  value = {
+    for k, eip in aws_eip.custom : k => eip.public_ip
+  }
+}
+
+output "eip_allocation_ids" {
+  description = "Elastic IP allocation IDs"
+  value = {
+    for k, eip in aws_eip.custom : k => eip.id
+  }
+}
+

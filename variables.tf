@@ -38,15 +38,29 @@ variable "subnets" {
     name = string # Custom name for the subnet
   }))
   default = {
-    subnet1  = { cidr = "10.0.1.0/24", type = "public", az = "ap-south-1a", name = "Public Subnet 1" },
-    subnet2  = { cidr = "10.0.2.0/24", type = "public", az = "ap-south-1b", name = "Public Subnet 2" },
-    subnet3  = { cidr = "10.0.3.0/24", type = "public", az = "ap-south-1c", name = "Public Subnet 3" },
-    subnet4  = { cidr = "10.0.4.0/24", type = "public", az = "ap-south-1a", name = "Public Subnet 4" },
-    subnet5  = { cidr = "10.0.5.0/24", type = "public", az = "ap-south-1b", name = "Public Subnet 5" },
-    subnet6  = { cidr = "10.0.6.0/24", type = "private", az = "ap-south-1c", name = "Private Subnet 1" },
-    subnet7  = { cidr = "10.0.7.0/24", type = "private", az = "ap-south-1a", name = "Private Subnet 2" },
-    subnet8  = { cidr = "10.0.8.0/24", type = "private", az = "ap-south-1b", name = "Private Subnet 3" },
-    subnet9  = { cidr = "10.0.9.0/24", type = "private", az = "ap-south-1c", name = "Private Subnet 4" },
-    subnet10 = { cidr = "10.0.10.0/24", type = "private", az = "ap-south-1a", name = "Private Subnet 5" }
+    subnet1  = { cidr = "10.0.1.0/24", type = "public", az = "ap-south-1a", name = "Public_Subnet_1" },
+    subnet2  = { cidr = "10.0.2.0/24", type = "public", az = "ap-south-1b", name = "Public_Subnet_2" },
+    subnet3  = { cidr = "10.0.3.0/24", type = "public", az = "ap-south-1c", name = "Public_Subnet_3" },
+    subnet4  = { cidr = "10.0.4.0/24", type = "public", az = "ap-south-1a", name = "Public_Subnet_4" },
+    subnet5  = { cidr = "10.0.5.0/24", type = "public", az = "ap-south-1b", name = "Public_Subnet 5" },
+    subnet6  = { cidr = "10.0.6.0/24", type = "private", az = "ap-south-1c", name = "Private_Subnet_1" },
+    subnet7  = { cidr = "10.0.7.0/24", type = "private", az = "ap-south-1a", name = "Private_Subnet_2" },
+    subnet8  = { cidr = "10.0.8.0/24", type = "private", az = "ap-south-1b", name = "Private_Subnet_3" },
+    subnet9  = { cidr = "10.0.9.0/24", type = "private", az = "ap-south-1c", name = "Private_Subnet_4" },
+    subnet10 = { cidr = "10.0.10.0/24", type = "private", az = "ap-south-1a", name = "Private_Subnet_5" }
   }
 }
+
+## EIP Variable
+
+variable "elastic_ips" {
+  description = "Map of EIPs to create with custom names"
+  type = map(object({
+    name = string
+    tags = optional(map(string), {})
+  }))
+  default = {}
+}
+
+
+## 
